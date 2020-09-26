@@ -55,7 +55,8 @@ class DatabaseConnectionService implements TypeOrmOptionsFactory {
                 migrationsDir: 'src/migrations'
             },
             migrationsTableName: 'migrations',
-            ssl: { rejectUnauthorized: false }, // Configuración para PostgreSQL en Heroku
+            // ssl: { rejectUnauthorized: false }, // Configuración para PostgreSQL en Heroku
+            ssl: false,
 
         };
     }
