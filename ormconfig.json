@@ -1,0 +1,26 @@
+{
+  "name": "default",
+  "type": "postgres",
+  "host": "ec2-3-214-4-151.compute-1.amazonaws.com",
+  "port": 5432,
+  "username": "hcpicvocbhtdff",
+  "password": "053fb76b098de61ca84ea43b53e60a1c4ef2470efb2f9ba9d8550cd4a30d0c46",
+  "database": "d21rjdja25i74i",
+  "synchronize": false,
+  "dropSchema": false,
+  "logger": "file",
+  "logging": "all",
+  "entities": [
+    "dist/entities/*.entity{.ts,.js}"
+  ],
+  "migrations": [
+    "src/migrations/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "src/migrations"
+  },
+  "migrationsTableName": "migrations",
+  "ssl": {
+    "rejectUnauthorized": false
+  }
+}
