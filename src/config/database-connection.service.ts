@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { TypeOrmOptionsFactory, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import 'dotenv/config';
 
-const { DATABASE_URL, DATABASE_PORT, DATABASE_USER, DATABASE_PASSWORD, DATABASE_DB } = process.env;
+const { DATABASE_HOST, DATABASE_PORT, DATABASE_USER, DATABASE_PASSWORD, DATABASE_DB } = process.env;
 
 @Injectable()
 class DatabaseConnectionService implements TypeOrmOptionsFactory {
@@ -11,7 +11,7 @@ class DatabaseConnectionService implements TypeOrmOptionsFactory {
         return {
             name: 'default',
             type: 'postgres',
-            host: DATABASE_URL,
+            host: DATABASE_HOST,
             port: Number(DATABASE_PORT),
             username: DATABASE_USER,
             password: DATABASE_PASSWORD,
