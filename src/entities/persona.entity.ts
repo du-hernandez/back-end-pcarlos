@@ -31,8 +31,8 @@ export class PersonaEntity extends BaseEntity {
   edad: number;
 }
 
-export const PersonaProvider = {
-  provide: 'PersonaRepository',
-  useFactory: (connection: Connection) => connection.getCustomRepository(PersonaEntity),
-  inject: [Connection]
-};
+// export const PersonaProvider = {
+//   provide: 'PersonaRepository',
+//   useFactory: (connection: Connection) => connection.getCustomRepository(PersonaEntity),
+//   inject: [Connection]
+// };
