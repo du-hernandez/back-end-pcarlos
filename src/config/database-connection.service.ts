@@ -2,9 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { TypeOrmOptionsFactory, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import 'dotenv/config';
 
-const { DATABASE_HOST, DATABASE_PORT, DATABASE_USER, DATABASE_PASSWORD, DATABASE_DB } = process.env;
-
-console.log("-----------------------------------------------: ", process.env)
+const { ENVIRONMENT, DATABASE_HOST, DATABASE_PORT, DATABASE_USER, DATABASE_PASSWORD, DATABASE_DB } = process.env;
 
 @Injectable()
 class DatabaseConnectionService implements TypeOrmOptionsFactory {
@@ -58,7 +56,7 @@ class DatabaseConnectionService implements TypeOrmOptionsFactory {
             },
             migrationsTableName: 'migrations',
             // ssl: { rejectUnauthorized: false }, // Configuración para PostgreSQL en Heroku
-            ssl: false,
+            ssl: ENVIRONMENT === 'DEV' ? { rejectUnauthorized: false } : false,
 
         };
     }

@@ -1,5 +1,5 @@
 import { BaseEntity } from './base'
-import { Column, Entity } from 'typeorm'
+import { Column, Entity, Connection } from 'typeorm'
 
 // enum tipoID { CC, TI, CE, PA }
 
@@ -30,3 +30,9 @@ export class PersonaEntity extends BaseEntity {
   @Column({ type: 'int' })
   edad: number;
 }
+
+export const PersonaProvider = {
+  provide: 'PersonaRepository',
+  useFactory: (connection: Connection) => connection.getCustomRepository(PersonaEntity),
+  inject: [Connection]
+};
