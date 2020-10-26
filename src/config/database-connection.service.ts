@@ -4,6 +4,8 @@ import 'dotenv/config';
 
 const { ENVIRONMENT, DATABASE_HOST, DATABASE_PORT, DATABASE_USER, DATABASE_PASSWORD, DATABASE_DB } = process.env;
 
+console.log('process.env: ', process.env)
+
 @Injectable()
 class DatabaseConnectionService implements TypeOrmOptionsFactory {
 
