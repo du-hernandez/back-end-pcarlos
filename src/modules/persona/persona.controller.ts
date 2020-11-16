@@ -1,8 +1,8 @@
 import { Controller } from '@nestjs/common';
-import { Crud, CrudController } from '@nestjsx/crud'
-import { PersonaEntity } from '../../entities/persona.entity'
-import { PersonaService } from './persona.service'
-import { CreatePersonaDto } from './dto/persona.dto'
+import { Crud, CrudController } from '@nestjsx/crud';
+import { PersonaEntity } from '../../entities/persona.entity';
+import { PersonaService } from './persona.service';
+import { CreatePersonaDto } from './dto/persona.dto';
 
 @Crud({
   model: { type: PersonaEntity },

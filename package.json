@@ -24,7 +24,10 @@
     "typeorm:migration:generate": "yarn run typeorm -- migration:generate -n",
     "typeorm:migration:run": "yarn run typeorm migration:run",
     "migration:prepare": "rm -rf dist src/migrations/* ormconfig.json && yarn run start:dev",
-    "migration:run": "yarn run typeorm:migration:generate -- Owner && yarn run typeorm:migration:run && rm -rf dist src/migrations/*"
+    "migration:run": "yarn build && yarn typeorm:migration:generate -- Owner && yarn typeorm:migration:run && rm -rf dist src/migrations/*",
+    "db:migration:generate": "npx typeorm migration:generate -n",
+    "db:migration:run": "npx typeorm migration:run",
+    "db:migration:revert": "npx typeorm migration:revert"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",

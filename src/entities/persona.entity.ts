@@ -1,5 +1,7 @@
 import { BaseEntity } from './base'
-import { Column, Entity, Connection } from 'typeorm'
+import { Column, Entity, Connection, ManyToMany, ManyToOne, JoinColumn, OneToMany } from 'typeorm'
+import { EventoEntity } from './evento.entity';
+import { PersonaEventoEntity } from './personaEvento.entity';
 
 // enum tipoID { CC, TI, CE, PA }
 
@@ -29,6 +31,14 @@ export class PersonaEntity extends BaseEntity {
 
   @Column({ type: 'int' })
   edad: number;
+
+  // @ManyToMany(type => EventoEntity, evento => evento.personas)
+  // eventos: EventoEntity[];
+
+  // Solución: Hacer relación OneToMany a la entidad Persona_has_Evento
+
+  @OneToMany(type => PersonaEventoEntity, personaEvento => personaEvento.persona)
+  personaEventos: PersonaEventoEntity[];
 }
 
 // export const PersonaProvider = {

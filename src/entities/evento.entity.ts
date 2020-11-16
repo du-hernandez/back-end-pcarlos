@@ -1,5 +1,7 @@
 import { BaseEntity } from './base'
-import { Column, CreateDateColumn, Entity } from 'typeorm'
+import { Column, CreateDateColumn, Entity, ManyToMany, JoinTable, ManyToOne, JoinColumn, OneToMany } from 'typeorm'
+import { UsuarioEntity } from './usuario.entity';
+import { PersonaEventoEntity } from './personaEvento.entity';
 
 @Entity({ name: 'evento' })
 export class EventoEntity extends BaseEntity {
@@ -13,8 +15,9 @@ export class EventoEntity extends BaseEntity {
   @Column()
   capacidad: number;
 
-  @CreateDateColumn({ type: 'timestamptz' })
-  fecha: Date;
+  // @CreateDateColumn({ type: 'timestamptz' })
+  @Column("character varying", { length: 30 })
+  fecha: string;
 
   @Column()
   duracion: number;
@@ -24,5 +27,16 @@ export class EventoEntity extends BaseEntity {
 
   @Column()
   edadMax: number;
+
+  // @ManyToMany(type => PersonaEntity, persona => persona.eventos)
+  // @JoinTable({ name: 'perosona_has_evento' })
+  // personas: PersonaEntity[];
+
+  @ManyToOne(type => UsuarioEntity, usuario => usuario.eventos)
+  @JoinColumn({ name: 'fk_usuario' })
+  usuario: UsuarioEntity;
+
+  @OneToMany(type => PersonaEventoEntity, personaEvento => personaEvento.evento)
+  personaEventos: PersonaEventoEntity[];
 
 }

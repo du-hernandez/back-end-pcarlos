@@ -1,25 +1,31 @@
-import { ApiProperty } from "@nestjs/swagger";
-
+import {
+  Length,
+  IsString,
+  IsNumber,
+  IsDate
+} from 'class-validator';
 
 export class EventoDto {
-  @ApiProperty({ minLength: 3, maxLength: 30, example: 'Jasinto' })
+  @IsString()
+  @Length(2, 50)
   nombre: string;
 
-  @ApiProperty({ minLength: 3, maxLength: 10, example: 'Se casa con Josefa' })
+  @IsString()
+  @Length(0, 200)
   descripcion: string;
 
-  @ApiProperty({ minLength: 1, maxLength: 10000, example: 'Capacidad' })
+  @IsNumber()
   capacidad: number;
 
-  @ApiProperty({ description: "'CC', 'TI', 'CE', 'PA'" })
-  fecha: Date;
+  @IsString()
+  fecha: string;
 
-  @ApiProperty({ description: "'CC', 'TI', 'CE', 'PA'" })
+  @IsNumber()
   duracion: number;
 
-  @ApiProperty({ description: "'CC', 'TI', 'CE', 'PA'" })
+  @IsNumber()
   edadMin: number;
 
-  @ApiProperty({ description: "'CC', 'TI', 'CE', 'PA'" })
+  @IsNumber()
   edadMax: number;
 }

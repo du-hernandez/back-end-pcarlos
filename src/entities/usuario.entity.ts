@@ -1,17 +1,14 @@
 import { BaseEntity } from './base'
-import { Column, Entity } from 'typeorm'
+import { Column, Entity, OneToMany, ManyToOne, JoinColumn } from 'typeorm'
+import { EventoEntity } from './evento.entity';
 
 enum tipoID { CC, TI, CE, PA }
 
 @Entity({ name: 'usuario' })
 export class UsuarioEntity extends BaseEntity {
 
-  @Column({
-    type: 'enum',
-    enum: tipoID,
-    default: tipoID.CC
-  })
-  tipoID: tipoID;
+  @Column("character varying", { length: 3 })
+  tipoID: string;
 
   @Column("character varying", { length: 100 })
   identificacion: string;
@@ -30,8 +27,11 @@ export class UsuarioEntity extends BaseEntity {
 
   @Column("text", {
     select: false,
-    nullable: true
+    nullable: false
   })
   contrasena: string;
+
+  @OneToMany(type => EventoEntity, evento => evento.usuario)
+  eventos: EventoEntity[];
 
 }

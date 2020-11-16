@@ -4,7 +4,6 @@ import 'dotenv/config';
 
 const { ENVIRONMENT, DATABASE_HOST, DATABASE_PORT, DATABASE_USER, DATABASE_PASSWORD, DATABASE_DB } = process.env;
 
-console.log('process.env: ', process.env)
 
 @Injectable()
 class DatabaseConnectionService implements TypeOrmOptionsFactory {
@@ -49,6 +48,7 @@ class DatabaseConnectionService implements TypeOrmOptionsFactory {
              * simple-console: igual que anterior, sólo que no colorea la sintaxis. Se puede usar si tiene algún problema con el anterior.
              * debug: utiliza el paquete de depuración. Para activar el registro, configure la variable de entorno `DEBUG=typeorm:*`
              */
+            // migrationsRun: true,
             logger: "file",
             logging: 'all',
             entities: ['dist/entities/*.entity{.ts,.js}'],

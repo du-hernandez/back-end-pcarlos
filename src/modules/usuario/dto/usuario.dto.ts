@@ -4,13 +4,15 @@ import {
   IsOptional,
   IsEnum,
   IsString,
-  IsBoolean
+  IsBoolean,
+  IsNumber
 } from 'class-validator';
 
-export enum TipoID { "CC", "TI", "CE", "PA" };
+export enum TipoID { CC, TI, CE, PA };
 
-export class CreatePersonaDto {
+export class CreateUsuarioDto {
 
+  // Documentación de enums: https://docs.nestjs.com/openapi/types-and-parameters#enums
   @IsEnum(TipoID)
   tipoID: string;
 
@@ -23,23 +25,22 @@ export class CreatePersonaDto {
   nombre: string;
 
   @IsString()
-  @Length(5, 10)
+  @Length(8, 10)
   telefono: string;
 
   @IsEmail()
-  @Length(8, 50)
+  @Length(3, 50)
   correo: string;
 
-  @Length(3, 20)
   @IsString()
+  @Length(5, 50)
   contrasena: string;
 
-  @Length(1, 2)
-  @IsString()
+  @IsNumber()
   edad: number;
 
-  @IsOptional()
-  @IsBoolean()
-  estado: boolean;
+  // @IsOptional()
+  // @IsBoolean()
+  // estado: boolean;
 
 }
