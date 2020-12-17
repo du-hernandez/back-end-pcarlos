@@ -16,13 +16,13 @@ async function bootstrap() {
     .setTitle('Iglesia')
     .setDescription('Api documentation')
     .setVersion('1.0')
-    .addTag('Iglesia, Iglesia')
+    .addTag('Iglesia')
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(process.env.PORT || 3000);
+  await app.listen(process.env.PORT || 4000);
 }
 bootstrap();
 // "start": "nest start",

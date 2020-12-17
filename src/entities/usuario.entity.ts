@@ -1,8 +1,6 @@
-import { BaseEntity } from './base'
-import { Column, Entity, OneToMany, ManyToOne, JoinColumn } from 'typeorm'
+import { BaseEntity } from './base';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { EventoEntity } from './evento.entity';
-
-enum tipoID { CC, TI, CE, PA }
 
 @Entity({ name: 'usuario' })
 export class UsuarioEntity extends BaseEntity {
